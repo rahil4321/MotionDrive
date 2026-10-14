@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070a12" />
+  <meta name="description" content="Turn your phone into a motion controller for a neon arcade racer." />
+  <title>MotionDrive — Motion Racing</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="MotionDrive home"><span class="brand-mark">M</span><span>MOTION<span class="brand-accent">DRIVE</span><small>PHONE-POWERED ARCADE</small></span></a>
+      <div class="top-status"><span id="serverDot" class="status-dot"></span><span id="serverStatus">Starting local server…</span></div>
+    </header>
+
+    <main>
+      <section class="hero-row">
+        <div>
+          <p class="eyebrow">// MOVE YOUR PHONE. MOVE THE GAME.</p>
+          <h1>Real motion.<br /><span>Zero controllers.</span></h1>
+          <p class="hero-copy">A low-latency motion link turns your phone into a steering wheel. Tilt to weave through the neon highway. Shake for a boost.</p>
+        </div>
+        <div class="hero-chip"><span class="chip-spark">✳</span><span>LIVE SENSOR INPUT<small>~30 updates / second</small></span></div>
+      </section>
+
+      <section class="game-layout">
+        <div class="game-panel">
+          <div class="panel-heading">
+            <div><span class="live-indicator"></span><span>NEON RUN // LIVE SESSION</span></div>
+            <div class="game-badges"><span id="gameLinkBadge" class="pill muted">GAME LINKING</span><span class="pill">ARCADE MODE</span></div>
+          </div>
+          <div class="canvas-wrap">
+            <canvas id="gameCanvas" aria-label="MotionDrive racing game. Tilt the connected phone to steer; use arrow keys as a fallback."></canvas>
+            <div class="canvas-overlay" id="canvasOverlay">
+              <div class="overlay-symbol">↗</div>
+              <p class="eyebrow">YOUR PHONE IS THE WHEEL</p>
+              <h2>Ready when you are.</h2>
+              <p>Connect the app, then tilt left and right to steer.</p>
+              <div class="keyboard-hint">KEYBOARD FALLBACK <kbd>←</kbd> <kbd>→</kbd> <kbd>SPACE</kbd></div>
+            </div>
+            <div class="run-ended" id="runEnded" hidden><p class="eyebrow">RUN COMPLETE</p><h2>Wipeout.</h2><p id="finalScore">Score: 0</p><button id="restartButton" class="primary-button">RUN IT BACK ↗</button></div>
+            <div class="canvas-vignette"></div>
+          </div>
+          <div class="hud-row">
+            <div class="hud-stat"><span>DISTANCE</span><strong id="distanceValue">0000<span>m</span></strong></div>
+            <div class="hud-stat"><span>SCORE</span><strong id="scoreValue">000000</strong></div>
+            <div class="hud-stat"><span>SHIELDS</span><strong id="livesValue" class="lives">◆ ◆ ◆</strong></div>
+            <div class="hud-stat speed-stat"><span>VELOCITY</span><strong id="speedValue">0<span>km/h</span></strong></div>
+          </div>
+        </div>
+
+        <aside class="pairing-panel">
+          <div class="section-label"><span>01</span> ESTABLISH LINK</div>
+          <h2>Pair your<br />co-pilot.</h2>
+          <p class="muted-copy">Keep your phone and laptop on the same Wi-Fi network. Open MotionDrive on your phone and enter these details.</p>
+          <div class="room-card">
+            <div class="room-card-head"><span>ROOM CODE</span><span class="expires-tag">LOCAL SESSION</span></div>
+            <div class="room-code" id="roomCode"><span>······</span><button id="copyCodeButton" title="Copy room code" aria-label="Copy room code">▢</button></div>
+            <div class="room-state"><span class="status-dot"></span><span id="roomStatus">Creating secure room…</span></div>
+          </div>
+          <div class="connect-details"><span class="detail-icon">⌁</span><div><span class="detail-title">SERVER ADDRESS</span><strong id="serverAddress">Detecting local IP…</strong><small>Enter this in the app. Do not use localhost on your phone.</small></div><button id="copyAddressButton" class="copy-small" aria-label="Copy server address">COPY</button></div>
+          <div class="connect-details"><span class="detail-icon">↯</span><div><span class="detail-title">CONNECTION</span><strong id="controllerStatus">Waiting for phone</strong><small id="connectionHint">Open the app and tap Connect.</small></div></div>
+          <button id="newRoomButton" class="secondary-button">↻ &nbsp; GENERATE NEW ROOM</button>
+          <div id="notice" class="notice" role="status" aria-live="polite"></div>
+        </aside>
+      </section>
+
+      <section class="how-section">
+        <div class="section-label"><span>02</span> LEARN THE MOVES</div>
+        <div class="move-grid">
+          <article class="move-card"><span class="move-number">01</span><div class="move-icon tilt-icon">↶</div><h3>Tip the wheel</h3><p>Roll your phone left or right to shift lanes. Calibrate from a comfortable neutral position.</p><span class="move-tag">GYROSCOPE / MOTION</span></article>
+          <article class="move-card"><span class="move-number">02</span><div class="move-icon boost-icon">ϟ</div><h3>Shake to boost</h3><p>Give your phone a quick shake to trigger a burst. A touch boost button is available as backup.</p><span class="move-tag">MOTION EVENT</span></article>
+          <article class="move-card"><span class="move-number">03</span><div class="move-icon link-icon">↗</div><h3>Stay in sync</h3><p>Sensor packets travel over WebSockets. If Wi-Fi blips, the app reconnects automatically.</p><span class="move-tag">LIVE SOCKET</span></article>
+        </div>
+      </section>
+    </main>
+    <footer><span>MD / 001</span><span>BUILT FOR MOVEMENT</span><span>LOCAL NETWORK · NO CLOUD REQUIRED</span></footer>
+  </div>
+  <script src="/game.js" defer></script>
+</body>
+</html>

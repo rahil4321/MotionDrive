@@ -1,0 +1,21 @@
+{
+  "name": "motiondrive",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Low-latency motion controller for a browser arcade racer",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test server/test/*.test.js",
+    "check": "node --check server/index.js && node --check server/src/protocol.js && node --check server/src/session-store.js && node --check server/src/create-server.js && node --check server/test/integration.test.js && node --check server/test/protocol.test.js && node --check server/test/session-store.test.js && node --check web/game.js",
+    "test:unit": "node --test server/test/protocol.test.js server/test/session-store.test.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "ws": "^8.18.3"
+  }
+}

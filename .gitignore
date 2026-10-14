@@ -1,0 +1,11 @@
+node_modules/
+mobile/node_modules/
+mobile/.expo/
+mobile/dist/
+mobile/android/
+mobile/ios/
+.env
+.DS_Store
+npm-debug.log*
+*.log
+coverage/

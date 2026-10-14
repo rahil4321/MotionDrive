@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "MotionDrive",
+    "slug": "motiondrive-controller",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "scheme": "motiondrive",
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.rahil4321.motiondrive",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#070A12"
+      }
+    },
+    "plugins": [
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "MotionDrive uses motion sensors to steer the racing game."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "icon": "./assets/icon.png"
+  }
+}
