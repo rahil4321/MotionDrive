@@ -332,7 +332,7 @@
     }
     state.previousBoost = boost;
     const boostOn = now < state.boostUntil;
-    state.steer += (steer - state.steer) * Math.min(1, dt * 11);
+    state.steer += (steer - state.steer) * Math.min(1, dt * 18);
     if (!state.gameOver) {
       state.playerLane = clamp(state.playerLane + state.steer * dt * 1.35, -.93, .93);
       const speedFactor = clamp(.92 + throttle * .1 + (boostOn ? .55 : 0), .65, 1.65);
